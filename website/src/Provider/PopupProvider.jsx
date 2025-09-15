@@ -11,12 +11,10 @@ export const PopupProvider = ({ children, interval }) => {
     useState(false);
   const location = useLocation();
 
-  // 从路径中获取 taskId 和额外的路径部分
   const match = location.pathname.match(/\/task\/(\d+)\/(.+)/);
   const taskId = match ? parseInt(match[1], 10) : null;
   const extraPath = match ? match[2] : null;
 
-  // 检查是否在task completion modal页面或其他不需要popup的页面 - 通过URL路径检测
   const isInTaskCompletionModal =
     location.pathname.includes("/task/") &&
     (location.pathname.includes("/completion") ||
@@ -32,7 +30,6 @@ export const PopupProvider = ({ children, interval }) => {
   }, [taskId]);
 
   useEffect(() => {
-    // 第一次进入界面就显示popup
     if (!hasShownInitial && taskId === 10 && extraPath && !popupDisabled) {
       setOpen(true);
       setHasShownInitial(true);
@@ -41,20 +38,17 @@ export const PopupProvider = ({ children, interval }) => {
 
   useEffect(() => {
     let timer;
-    // 如果用户进入了task completion modal或其他不需要popup的页面，停止显示popup
     if (taskId === 10 && isInTaskCompletionModal) {
       setOpen(false);
       setPopupDisabled(true);
       return;
     }
 
-    // 如果TaskCompletionModal打开，立即关闭popup并停止定时器
     if (isTaskCompletionModalOpen) {
       setOpen(false);
       return;
     }
 
-    // 只有在没有禁用且已经显示过初始popup的情况下才启动定时器
     if (!popupDisabled && hasShownInitial && taskId === 10 && extraPath) {
       timer = setInterval(() => {
         setOpen(true);

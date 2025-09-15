@@ -22,7 +22,6 @@ const TaskVideoPlayer = () => {
   const [taskCompletionModalOpen, setTaskCompletionModalOpen] = useState(false);
   const [videoSource, setVideoSource] = useState("");
 
-  // 根据任务ID动态导入对应的视频文件
   const loadVideo = async (taskId) => {
     try {
       const videoModule = await import(`../../assets/task${taskId}.mov`);
@@ -33,23 +32,11 @@ const TaskVideoPlayer = () => {
     }
   };
 
-  // 当任务ID改变时加载对应的视频
   React.useEffect(() => {
     if (id) {
       loadVideo(id);
     }
   }, [id]);
-
-  const handlePlayPause = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
 
   const handleVideoEnd = () => {
     setShowCompleteButton(true);
@@ -76,11 +63,7 @@ const TaskVideoPlayer = () => {
   return (
     <Container maxWidth="lg" sx={{ mt: 2 }}>
       <Box sx={{ textAlign: "center", mb: 3 }}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          {/* {currentTask?.title} */}
-          Please watch the video of the GUI agent performing the task. If you
-          disagree with the agent’s choice, you can skip the task.
-        </Typography>
+        <Typography variant="h4" component="h1" gutterBottom></Typography>
         <Typography variant="body1" color="text.secondary"></Typography>
       </Box>
 
@@ -130,7 +113,6 @@ const TaskVideoPlayer = () => {
             />
           )}
 
-          {/* 播放/暂停按钮覆盖层 - 只在视频加载完成后显示 */}
           {videoSource && (
             <Box
               sx={{
@@ -152,16 +134,6 @@ const TaskVideoPlayer = () => {
       </Box>
 
       <Box sx={{ textAlign: "center", mb: 3 }}>
-        {/* <Button
-          variant="contained"
-          size="large"
-          onClick={handlePlayPause}
-          disabled={!videoSource}
-          sx={{ mr: 2 }}
-        >
-          {isPlaying ? "Pause" : "Play"}
-        </Button> */}
-
         <Button
           variant="contained"
           color="success"
@@ -173,7 +145,6 @@ const TaskVideoPlayer = () => {
         </Button>
       </Box>
 
-      {/* Task Completion Modal */}
       <TaskCompletionModal
         id={id}
         open={taskCompletionModalOpen}

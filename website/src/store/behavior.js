@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const behaviorSlice = createSlice({
   name: "behavior",
   initialState: {
-    avoidedBehaviors: {}, // 存储每个task的avoid behavior状态
+    avoidedBehaviors: {},
   },
   reducers: {
     setAvoidedBehavior: (state, action) => {

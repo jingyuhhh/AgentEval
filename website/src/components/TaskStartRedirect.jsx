@@ -25,7 +25,7 @@ const TaskStartRedirect = () => {
       task.taskType === TaskType.CancelSubscription ||
       task.taskType === TaskType.SignSubscription
     ) {
-      return `/task/${id}/store/1`;
+      return `/task/${id}/store`;
     }
     return `/task/${id}/shopping`;
   }, [id, tasks, userID]);

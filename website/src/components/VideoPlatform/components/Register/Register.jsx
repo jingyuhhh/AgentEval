@@ -25,7 +25,6 @@ export const Register = ({ open, onClose, onLoginSuccess }) => {
       password === confirmPassword
     ) {
       onLoginSuccess({ username, fullName });
-      // Reset form
       setFullName("");
       setUsername("");
       setPassword("");
@@ -36,7 +35,6 @@ export const Register = ({ open, onClose, onLoginSuccess }) => {
 
   const handleClose = () => {
     onClose();
-    // Reset form
     setFullName("");
     setUsername("");
     setPassword("");

@@ -10,8 +10,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 const theme = createTheme({
   palette: {
     amazon: {
-      main: "#ffd814", // Amazon 黄
-      contrastText: "#000000", // 按钮文字颜色
+      main: "#ffd814",
+      contrastText: "#000000",
     },
   },
 });

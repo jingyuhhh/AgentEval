@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { resetCart } from "../../../../store/cart";
 import {
   Typography,
   Button,
@@ -21,7 +20,6 @@ const SHIPPING_OPTIONS = [
 
 const Checkout = () => {
   const items = useSelector((state) => state.cart.items);
-  const dispatch = useDispatch();
 
   const { id } = useParams();
   const [address, setAddress] = useState({
@@ -192,7 +190,6 @@ const Checkout = () => {
           </Paper>
         </div>
 
-        {/* 右侧：订单总结 */}
         <div className="md:col-span-4">
           <Paper className="p-6 rounded-xl bg-white border border-gray-200 shadow">
             {error && (
@@ -247,7 +244,6 @@ const Checkout = () => {
         </div>
       </div>
 
-      {/* 下单成功弹窗 */}
       <TaskCompletionModal
         id={id}
         open={dialogOpen}

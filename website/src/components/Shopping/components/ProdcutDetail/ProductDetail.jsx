@@ -1,18 +1,16 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Nav from "../Nav/Nav";
-import { getProducts } from "../../../../data/productInfo";
+import { getProducts } from "../../../../data/Info";
 import Button from "@mui/material/Button";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../../../store/cart";
 import { useEffect, useState } from "react";
-import { usePreserveQueryNavigate } from "../../../../hooks/useQueryNavigate";
 import useGlobalCountdown from "../../../../hooks/useGlobalCountdown";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 
 const ProductDetail = () => {
   const { id, productId } = useParams();
-  const navigate = usePreserveQueryNavigate();
   const dispatch = useDispatch();
   const products = getProducts(id);
   const product = products.find((item) => item.id === parseInt(productId, 10));

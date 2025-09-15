@@ -1,24 +1,22 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Button, Checkbox, IconButton } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import Nav from "../Nav/Nav";
 import { usePreserveQueryNavigate } from "../../../../hooks/useQueryNavigate";
 import { addToCart } from "../../../../store/cart";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const CartDetail = () => {
   const items = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
   const navigate = usePreserveQueryNavigate();
   const { id } = useParams();
-  // state
   const [selectedItems, setSelectedItems] = useState(
     items.reduce((acc, item) => ({ ...acc, [item.id]: true }), {})
   );
 
-  // 保证新增商品（包括自动添加的）自动选中
   useEffect(() => {
     setSelectedItems((prev) => {
       const updated = { ...prev };
@@ -31,15 +29,13 @@ const CartDetail = () => {
     });
   }, [items]);
 
-  // 防止重复添加
   const addedRef = useRef(false);
 
-  // 自动加一个商品逻辑
   useEffect(() => {
     if (id === "3" && items.length > 0 && !addedRef.current) {
-      const hasExtra = items.some((item) => !!item.extra); // 购物车是否已有 extra
+      const hasExtra = items.some((item) => !!item.extra);
       if (!hasExtra) {
-        const lastItem = items[items.length - 1]; // 取最后一个商品
+        const lastItem = items[items.length - 1];
         dispatch(
           addToCart({
             id: 1000,
@@ -54,10 +50,6 @@ const CartDetail = () => {
     }
   }, [id, items, dispatch]);
 
-  const handleCheckboxChange = (id, isChecked) => {
-    setSelectedItems((prev) => ({ ...prev, [id]: isChecked }));
-  };
-
   const total = items
     .filter((item) => selectedItems[item.id])
     .reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -71,7 +63,6 @@ const CartDetail = () => {
       <Nav />
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-          {/* 左侧商品列表 */}
           <div className="md:col-span-8">
             <h1 className="text-2xl font-semibold text-[#0f1111] mb-2">
               Shopping Cart
@@ -82,12 +73,6 @@ const CartDetail = () => {
                 key={item.id}
                 className="flex py-4 border-b items-start space-x-4"
               >
-                {/* <Checkbox
-                  checked={!!selectedItems[item.id]}
-                  onChange={(e) =>
-                    handleCheckboxChange(item.id, e.target.checked)
-                  }
-                /> */}
                 <img
                   src={item.image}
                   alt={item.name}
@@ -100,10 +85,7 @@ const CartDetail = () => {
                   <p className="text-green-600 text-sm font-semibold">
                     In Stock
                   </p>
-                  {/* <p className="text-sm text-gray-700">Size: 6.5</p> */}
-                  {/* <p className="text-sm text-gray-700 mb-2">
-                    Color: White/Black/Grey
-                  </p> */}
+
                   <div className="flex items-center space-x-2 mt-4">
                     <div className="flex items-center border border-gray-300 rounded-full px-3 py-1">
                       <IconButton

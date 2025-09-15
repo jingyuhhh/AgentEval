@@ -2,7 +2,7 @@ import Product from "./components/Product/Product.jsx";
 import Nav from "./components/Nav/Nav.jsx";
 import { useParams } from "react-router-dom";
 import { usePreserveQueryNavigate } from "../../hooks/useQueryNavigate.js";
-import { getProducts } from "../../data/productInfo.js";
+import { getProducts } from "../../data/Info.js";
 
 function Shopping() {
   const navigate = usePreserveQueryNavigate();
@@ -13,7 +13,6 @@ function Shopping() {
     <div>
       <Nav />
       <div className="px-8 py-4">
-        {/* Amazon 风格标题 & 提示 */}
         <h2 className="text-[20px] leading-snug font-bold text-[#0f1111] mb-1">
           Results
         </h2>
@@ -22,7 +21,6 @@ function Shopping() {
           details may vary based on product size and color.
         </p>
 
-        {/* 产品网格 */}
         <div
           style={{
             display: "grid",

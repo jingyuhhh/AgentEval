@@ -25,14 +25,12 @@ import { IconButton } from "@mui/material";
 import { usePreserveQueryNavigate } from "../../hooks/useQueryNavigate";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
-// 重新初始化日志数据的函数
 const resetLoggerData = () => {
   localStorage.removeItem("userActions");
   localStorage.removeItem("lastInputValues");
   localStorage.removeItem("lastToggleStates");
   localStorage.removeItem("visitedRoutes");
 
-  // 重新初始化全局变量
   window.userActions = [];
   window.lastInputValues = {};
   window.lastToggleStates = {};
@@ -51,7 +49,6 @@ const TaskEntry = () => {
   const parsedId = parseInt(id, 10);
   const task = tasks.find((task) => task.id === parsedId);
 
-  // 根据domain获取相应的PII信息
   const getPIIByDomain = (domain) => {
     switch (domain) {
       case DomainType.ECommerce:
@@ -67,16 +64,13 @@ const TaskEntry = () => {
 
   const currentPII = getPIIByDomain(task?.domain);
 
-  // 在任务开始时重新初始化日志数据
   useEffect(() => {
     resetLoggerData();
   }, [id]);
 
   const handleContinue = () => {
-    // 获取当前任务在用户任务列表中的索引
     const taskIndex = tasks.findIndex((t) => t.id === task.id);
 
-    // 检查是否应该播放视频
     if (shouldPlayVideo(userID, taskIndex)) {
       navigate(`/task/${id}/taskvideo`);
     } else {
@@ -86,7 +80,7 @@ const TaskEntry = () => {
         task.taskType === TaskType.CancelSubscription ||
         task.taskType === TaskType.SignSubscription
       ) {
-        navigate(`/task/${id}/store/1`);
+        navigate(`/task/${id}/store`);
       } else {
         navigate(`/task/${id}/shopping`);
       }
@@ -128,7 +122,6 @@ const TaskEntry = () => {
               sx={{
                 fontSize: 20,
                 verticalAlign: "middle",
-                // color: "primary.main",
               }}
             />
             on top left corner

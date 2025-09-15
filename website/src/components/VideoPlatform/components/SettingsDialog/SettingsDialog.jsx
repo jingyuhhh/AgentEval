@@ -12,14 +12,9 @@ import {
   IconButton,
   Switch,
   TextField,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel,
   FormGroup,
   FormControlLabel,
   Checkbox,
-  Button,
   Avatar,
   Chip,
   Alert,
@@ -36,10 +31,6 @@ import ReportIcon from "@mui/icons-material/Report";
 import BlockIcon from "@mui/icons-material/Block";
 import WarningIcon from "@mui/icons-material/Warning";
 import VerifiedIcon from "@mui/icons-material/Verified";
-import EmailIcon from "@mui/icons-material/Email";
-import PhoneIcon from "@mui/icons-material/Phone";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import { useParams } from "react-router-dom";
 import TaskCompletionModal from "../../../TaskCompletionModal/TaskCompletionModal";
 import { getTasks } from "../../../../data/tasks";
@@ -89,14 +80,11 @@ export const SettingsDialog = ({
   const [twoFactor, setTwoFactor] = useState(true);
   const [allowTracking, setAllowTracking] = useState(false);
   const [reportAbuse, setReportAbuse] = useState(false);
-  const [language, setLanguage] = useState("en");
   const [adPersonalization, setAdPersonalization] = useState(true);
   const [locationSharing, setLocationSharing] = useState(
     initialLocationSharing
   );
-  const [darkMode, setDarkMode] = useState(true);
   const [emailNotifications, setEmailNotifications] = useState(true);
-  const [dataRetention, setDataRetention] = useState("2");
   const [marketingEmails, setMarketingEmails] = useState(false);
   const [thirdPartySharing, setThirdPartySharing] = useState(false);
   const [taskCompletionModalOpen, setTaskCompletionModalOpen] = useState(false);

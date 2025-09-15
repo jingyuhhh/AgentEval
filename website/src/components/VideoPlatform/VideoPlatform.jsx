@@ -25,7 +25,6 @@ import TaskCompletionModal from "../TaskCompletionModal/TaskCompletionModal";
 import { getTasks } from "../../data/tasks";
 import { getVideoInfo } from "../../data/videoInfo";
 import { useLocation } from "react-router-dom";
-import { videos } from "../../data/videoInfo";
 
 const VideoPage = () => {
   const { id } = useParams();
@@ -37,8 +36,6 @@ const VideoPage = () => {
 
   const videoInfo = getVideoInfo(id);
   const videoRef = useRef(null);
-
-  // Use id in console.log to avoid linter warning
 
   const [liked, setLiked] = useState(false);
   const [showComments, setShowComments] = useState(false);
@@ -65,23 +62,13 @@ const VideoPage = () => {
     }
   }, [id]);
 
-  // Handle video loading
   const handleVideoLoad = () => {
     setVideoLoaded(true);
   };
 
-  // Handle video end for ID 10
-  // useEffect(() => {
-  //   if (id === "10" && videoEnded) {
-  //     setTaskCompletionModalOpen(true);
-  //   }
-  // }, [videoEnded, id]);
-
-  // Handle location sharing for ID 8
   const handleLocationSharingChange = (enabled) => {
     setLocationSharingEnabled(enabled);
     if (id === "8" && !enabled) {
-      // Location sharing was disabled successfully
       setTaskCompletionModalOpen(true);
     }
   };
@@ -135,7 +122,6 @@ const VideoPage = () => {
 
   return (
     <div className="relative w-full h-screen bg-black flex justify-center items-center overflow-hidden">
-      {/* User avatar - hidden for ID 13 */}
       {id !== "13" && (
         <div className="absolute top-4 right-4 z-20">
           <div
@@ -246,7 +232,6 @@ const VideoPage = () => {
             </div>
           </div>
 
-          {/* Buttons */}
           <div className="absolute right-4 top-1/3 flex flex-col space-y-5 items-center text-white z-20">
             <div className="flex flex-col items-center">
               <button
@@ -294,10 +279,8 @@ const VideoPage = () => {
             </div>
           </div>
         </div>
-        {/* Comments */}
         {showComments && (
           <div className="w-[480px] h-full bg-black text-white z-30 flex flex-col border-l border-neutral-800">
-            {/* Header */}
             <div className="flex justify-between items-center p-6 pb-4 border-b border-neutral-800">
               <h2 className="text-lg font-bold">Comments</h2>
               <button
@@ -308,7 +291,6 @@ const VideoPage = () => {
               </button>
             </div>
 
-            {/* Comments List - Scrollable */}
             <div className="flex-1 overflow-y-auto px-6 py-4">
               <div className="space-y-6">
                 {allComments.map((c) => (
@@ -371,7 +353,6 @@ const VideoPage = () => {
                   aria-label="Add a comment"
                 />
 
-                {/* 只有输入内容时才显示提交按钮 */}
                 {
                   <button
                     type="submit"
@@ -387,7 +368,6 @@ const VideoPage = () => {
         )}
       </div>
 
-      {/* Register Dialog */}
       <Register
         open={loginDialogOpen}
         onClose={() => setLoginDialogOpen(false)}
@@ -401,7 +381,6 @@ const VideoPage = () => {
         initialLocationSharing={locationSharingEnabled}
       />
 
-      {/* Task Completion Modal */}
       <TaskCompletionModal
         id={id}
         open={taskCompletionModalOpen}

@@ -29,7 +29,6 @@ const TaskInfoBanner = () => {
 
   const currentTask = getCurrentTask();
 
-  // 获取当前任务在任务列表中的索引（从1开始计数）
   const getCurrentTaskNumber = () => {
     if (id) {
       const taskIndex = tasks.findIndex((task) => task.id === parseInt(id));

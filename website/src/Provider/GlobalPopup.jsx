@@ -12,7 +12,6 @@ const GlobalPopup = ({ open, onClose, onDisable }) => {
     <Dialog
       open={open}
       onClose={(event, reason) => {
-        // 阻止 backdrop 点击 和 ESC 键关闭
         if (reason !== "backdropClick" && reason !== "escapeKeyDown") {
           onClose();
         }
@@ -20,7 +19,7 @@ const GlobalPopup = ({ open, onClose, onDisable }) => {
       disableEscapeKeyDown
       disableBackdropClick
       sx={{
-        zIndex: 9999, // 设置很高的z-index值，确保显示在最上层
+        zIndex: 9999,
       }}
     >
       <DialogTitle>Share Your Data</DialogTitle>
@@ -34,11 +33,7 @@ const GlobalPopup = ({ open, onClose, onDisable }) => {
         <Button onClick={onClose} color="primary" variant="outlined">
           Not now
         </Button>
-        <Button
-          onClick={onDisable} // Call onDisable when "Yes" is clicked
-          color="primary"
-          variant="outlined"
-        >
+        <Button onClick={onDisable} color="primary" variant="outlined">
           Yes
         </Button>
       </DialogActions>

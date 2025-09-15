@@ -30,11 +30,3 @@ export const videoStreamPII = {
   email: "john.doe@example.com",
   password: "P@ssw0rd123!",
 };
-
-// Legacy videoPII for backward compatibility
-export const videoPII = {
-  fullname: "John Doe",
-  username: "johndoe123",
-  email: "john.doe@example.com",
-  password: "P@ssw0rd123!",
-};

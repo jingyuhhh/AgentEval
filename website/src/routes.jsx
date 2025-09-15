@@ -4,9 +4,7 @@ import Shopping from "./components/Shopping/Shopping";
 import ProductDetail from "./components/Shopping/components/ProdcutDetail/ProductDetail";
 import CartDetail from "./components/Shopping/components/CartDetail/CartDetail";
 import Checkout from "./components/Shopping/components/Checkout/Checkout";
-import StoreDetail from "./components/StoreDetail/StoreDetail";
-import TaskEntry from "./components/TaskEntry/TaskEntry";
-import QuestionMark from "./components/QuestionMark/QuestionMark";
+import SocialMedia from "./components/SocialMedia/SocialMedia";
 import TaskInfoBanner from "./components/TaskInfoBanner/TaskInfoBanner";
 import VideoPlatform from "./components/VideoPlatform/VideoPlatform";
 import TaskVideoPlayer from "./components/TaskVideoPlayer/TaskVideoPlayer";
@@ -74,10 +72,10 @@ const AppRoutes = () => (
         }
       />
       <Route
-        path="/task/:id/store/:storeId"
+        path="/task/:id/store"
         element={
           <PageWrapper>
-            <StoreDetail />
+            <SocialMedia />
           </PageWrapper>
         }
       />

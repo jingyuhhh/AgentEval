@@ -8,7 +8,6 @@ const useGlobalCountdown = (key, durationInSeconds) => {
     let endTime = parseInt(sessionStorage.getItem(endTimeKey), 10);
 
     if (!endTime || isNaN(endTime)) {
-      // 第一次访问时写入
       endTime = Date.now() + durationInSeconds * 1000;
       sessionStorage.setItem(endTimeKey, endTime);
     }
