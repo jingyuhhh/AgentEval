@@ -188,25 +188,16 @@ export const getTasks = (userID) => {
   return tasks.map((_, i) => tasks[(i + userIndex - 1) % n]);
 };
 
-// 配置每个用户ID的视频任务范围
-// 如果为true，则前8个任务播放视频；如果为false，则后8个任务播放视频
 export const getUserVideoTaskConfig = (userID) => {
   const userIDInt = parseInt(userID, 10);
-  // 这里可以根据需要调整配置
-  // 例如：偶数用户ID播放前8个任务，奇数用户ID播放后8个任务
-  return userIDInt % 2 === 0; // true表示前8个任务播放视频，false表示后8个任务播放视频
+  return userIDInt % 2 === 0;
 };
 
-// 判断指定任务是否应该播放视频
 export const shouldPlayVideo = (userID, taskIndex) => {
   const config = getUserVideoTaskConfig(userID);
-  console.log(config);
-  console.log(taskIndex);
   if (config) {
-    // 前8个任务播放视频
     return taskIndex < 8;
   } else {
-    // 后8个任务播放视频
     return taskIndex >= 8;
   }
 };

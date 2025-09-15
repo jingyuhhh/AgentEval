@@ -6,6 +6,7 @@ const TaskStartRedirect = () => {
   const { id } = useParams();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
+  const isUserIDExist = searchParams.has("userID");
   const userID = searchParams.get("userID") || 1;
   const tasks = getTasks(userID);
 
@@ -15,7 +16,7 @@ const TaskStartRedirect = () => {
     if (!task) return "/task/1";
 
     const taskIndex = tasks.findIndex((t) => t.id === task.id);
-    if (shouldPlayVideo(userID, taskIndex)) {
+    if (shouldPlayVideo(userID, taskIndex) && isUserIDExist) {
       return `/task/${id}/taskvideo`;
     }
     if (task.domain === DomainType.VideoStream) {
