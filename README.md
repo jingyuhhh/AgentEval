@@ -1,6 +1,6 @@
 # Dark Patterns Meet GUI Agents
 
-[![Paper](https://img.shields.io/badge/paper-PDF-red)](REPLACE_WITH_LINK_TO_YOUR_PAPER.pdf)
+[![Paper](https://img.shields.io/badge/paper-PDF-red)](https://arxiv.org/abs/2509.10723)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 This repository contains the implementation and results for the paper: **"Dark Patterns Meet GUI Agents: LLM Agent Susceptibility to Manipulative Interfaces and the Role of Human Oversight"**.
@@ -68,4 +68,13 @@ npm install
 
 # 3. Start the development server
 npm run dev
+```
+## BibTeX
+```
+@article{darkpatterns2025guiagents,
+  title   = {Dark Patterns Meet GUI Agents: LLM Agent Susceptibility to Manipulative Interfaces and the Role of Human Oversight},
+  author  = {Author, A. and Author, B. and Author, C.},
+  journal = {arXiv preprint arXiv:2509.10723},
+  year    = {2025}
+}
 ```
