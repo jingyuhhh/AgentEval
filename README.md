@@ -71,10 +71,13 @@ npm run dev
 ```
 ## BibTeX
 ```
-@article{darkpatterns2025guiagents,
-  title   = {Dark Patterns Meet GUI Agents: LLM Agent Susceptibility to Manipulative Interfaces and the Role of Human Oversight},
-  author  = {Author, A. and Author, B. and Author, C.},
-  journal = {arXiv preprint arXiv:2509.10723},
-  year    = {2025}
+@misc{tang2025darkpatternsmeetgui,
+      title={Dark Patterns Meet GUI Agents: LLM Agent Susceptibility to Manipulative Interfaces and the Role of Human Oversight}, 
+      author={Jingyu Tang and Chaoran Chen and Jiawen Li and Zhiping Zhang and Bingcan Guo and Ibrahim Khalilov and Simret Araya Gebreegziabher and Bingsheng Yao and Dakuo Wang and Yanfang Ye and Tianshi Li and Ziang Xiao and Yaxing Yao and Toby Jia-Jun Li},
+      year={2025},
+      eprint={2509.10723},
+      archivePrefix={arXiv},
+      primaryClass={cs.HC},
+      url={https://arxiv.org/abs/2509.10723}, 
 }
 ```
